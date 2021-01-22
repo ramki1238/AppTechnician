@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Item detail</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>From state</ion-label>
+    <ion-select placeholder="Select state" (ionChange)="dataChange('fromstate',$event)">
+      <ion-select-option *ngFor="let state of fromstatesData" [value]="state.id">{{state.statename}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>From District</ion-label>
+    <ion-select placeholder="Select district" (ionChange)="dataChange('fromdistrict',$event)">
+      <ion-select-option *ngFor="let district of fromDistrictData" [value]="district.id">{{district.distname}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>From city</ion-label>
+    <ion-select placeholder="Select city">
+      <ion-select-option *ngFor="let city of fromcityData" [value]="city.id">{{city.mandalename}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">From address</ion-label>
+    <ion-textarea rows="3" cols="20" placeholder="Enter address"></ion-textarea>
+  </ion-item>
+  <ion-item>
+    <ion-label>To state</ion-label>
+    <ion-select placeholder="Select state" (ionChange)="dataChange('tostate',$event)">
+      <ion-select-option *ngFor="let state of tostatesData" [value]="state.id">{{state.statename}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>To District</ion-label>
+    <ion-select placeholder="Select district" (ionChange)="dataChange('todistrict',$event)">
+      <ion-select-option *ngFor="let district of toDistrictData" [value]="district.id">{{district.distname}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>To city</ion-label>
+    <ion-select placeholder="Select city">
+      <ion-select-option *ngFor="let city of tocityData" [value]="city.id">{{city.mandalename}}</ion-select-option>
+
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">To address</ion-label>
+    <ion-textarea rows="3" cols="20" placeholder="Enter address"></ion-textarea>
+  </ion-item>
+  <ion-item>
+    <ion-label position="fixed">item name</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="fixed">Item weight</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="fixed">Cost of Item</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+  <ion-button expand="full" color="danger"  class="btnsubmit">Submit</ion-button>
+</ion-content>
