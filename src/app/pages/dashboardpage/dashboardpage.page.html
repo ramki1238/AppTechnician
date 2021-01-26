@@ -7,6 +7,8 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
+  <ion-radio-group value="biff">
   <app-sendertravelerdata *ngFor="let itemData of itemsListData" [itemsData]="itemData"></app-sendertravelerdata>
+  </ion-radio-group>
 </ion-content>
 <app-footer></app-footer>
