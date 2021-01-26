@@ -1,0 +1,39 @@
+<div>
+  <ion-card class="sendertravelrdata-card">
+    <ion-card-content>
+      <div>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <p>{{itemsData.fromcity}}</p>
+              <p>
+                <ion-icon name="arrow-down-outline"></ion-icon>
+              </p>
+              <p>{{itemsData.tocity}}</p>
+            </ion-col>
+            <ion-col>
+              <div>
+                <p><u>Traveling Date & Time</u></p>
+                <p>{{itemsData.dateoftravel}} ({{itemsData.timeoftravel}})</p>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <p><u>User Details</u></p>
+              <p><ion-icon name="mail-outline"></ion-icon>&nbsp;<span>{{itemsData.email}}</span></p>
+              <p><ion-icon name="phone-portrait-outline"></ion-icon>&nbsp;<span>{{itemsData.mobile}}</span></p>
+            </ion-col>
+            <ion-col *ngIf="itemsData.type === 'sender'?true:false">
+              <p><u>Parceil details</u></p>
+              <p><span>itemtype :</span> <span>{{itemsData.itemtype}}</span></p>
+              <p><span>weight   :</span> <span>{{itemsData.weight}} </span>kg</p>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+</div>
+

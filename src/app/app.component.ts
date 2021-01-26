@@ -32,7 +32,7 @@ export class AppComponent {
     this.checkLogin();
   }
   async checkLogin() {
-    // await this.commonuiCtrl.isLogin() == true ? this.router.navigate(['dashboardpage']) : this.router.navigate(['welcomeslider']);
+    await this.commonuiCtrl.isLogin() == true ? this.router.navigate(['dashboardpage']) : this.router.navigate(['welcomeslider']);
   }
   RedirectToPage(pageis) {
     this.router.navigate([pageis]);

@@ -10,7 +10,7 @@ export class CommonUiControlService {
 
   constructor(public menuCntrl: MenuController,
     public navCtrl: Router,
-    private storage: Storage,
+    public storage: Storage,
     public alertController: AlertController,
     public loadingController: LoadingController) { }
 
@@ -20,29 +20,50 @@ export class CommonUiControlService {
       message: 'Please wait'
     });
     await loading.present();
-    await this.storage.set("typeofuser", usertype);
+    await this.storage.set("typeofuser", usertype).then((r)=>{
+      console.log(r);
+    }).catch((data)=>{
+      console.log(data);
+
+    })
     this.presentAlert("Success", "You logged in as " + usertype, ['Ok']);
-    this.navCtrl.navigate(['dashboardpage']);
+    if(!this.menuCntrl.isEnabled) this.menuCntrl.enable(true,'custom');
+    
+    
+    this.navCtrl.navigateByUrl('/dashboardpage',{ replaceUrl: true });
     loading.dismiss();
   }
-  async getTypeOfUser() {
+  async getTypeOfUser():Promise<string> {
+    let usertypeis;
     await this.storage.get("typeofuser").then((useris) => {
-      return useris;
+      usertypeis =useris;
     });
+    return usertypeis;
+  
   }
+  async getUserId():Promise<string> {
+    let usertypeis;
+    await this.storage.get("userid").then((useris) => {
+      usertypeis =useris;
+    });
+    return usertypeis;
+  
+  }
+
+
   async doLogOut() {
     const loading = await this.loadingController.create({
       message: 'Please wait'
     });
     await loading.present();
     await this.storage.clear();
-    this.navCtrl.navigate(['welcomeslider']);
+    this.navCtrl.navigateByUrl('/welcomeslider',{ replaceUrl: true });
     loading.dismiss();
   }
   async isLogin() {
     var islogin1 = false;
-    await this.storage.get("logindata").then((data) => {
-      if (data.username == null || data.username == '' || data.username == undefined || data.username.length == 0) {
+    await this.storage.get("userid").then((data) => {
+      if (data == null || data == '' || data == undefined || data.length == 0) {
         islogin1 = false;
       }
       else {
@@ -60,7 +81,7 @@ export class CommonUiControlService {
       console.log(ex);
     })
   }
-  async presentAlert(subheader, message, buttons) {
+  async presentAlert(subheader, message, buttons?) {
     const alert = await this.alertController.create({
       subHeader: subheader,
       message: message,
@@ -69,5 +90,4 @@ export class CommonUiControlService {
 
     await alert.present();
   }
-
 }

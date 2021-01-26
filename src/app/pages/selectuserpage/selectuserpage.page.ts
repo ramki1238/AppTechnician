@@ -18,6 +18,6 @@ export class SelectuserpagePage implements OnInit {
     await this.comnuiCtrl.saveTypeOfUser(userType);
   }
   backScreen(){
-    this.router.navigate(['loginpage']);
+    this.router.navigateByUrl('/loginpage',{ replaceUrl: true });
   }
 }

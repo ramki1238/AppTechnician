@@ -1,5 +1,12 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title side="center">Home</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 <ion-content>
-  <app-sidemenu [pagetitle]="pagetitle"></app-sidemenu>
-  <h1>welcome to dashboard</h1>
+  <app-sendertravelerdata *ngFor="let itemData of itemsListData" [itemsData]="itemData"></app-sendertravelerdata>
 </ion-content>
 <app-footer></app-footer>

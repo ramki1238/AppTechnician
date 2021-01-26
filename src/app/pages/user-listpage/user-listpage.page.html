@@ -1,4 +1,12 @@
 
 <ion-content>
-  <app-user-list [usertype]="usertype"></app-user-list>
+  <ion-header>
+    <ion-toolbar>
+      <ion-title side="center">{{usertype}}</ion-title>
+      <ion-buttons slot="start">
+        <ion-menu-button autoHide="false"></ion-menu-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <app-user-list  [usertype]="usertype"></app-user-list>
 </ion-content>

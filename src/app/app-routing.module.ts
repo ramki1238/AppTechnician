@@ -4,7 +4,7 @@ import {ComponentsModule} from './components/components.module'
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'loginpage',
+    redirectTo: 'welcomeslider',
     pathMatch: 'full'
   },
   {
@@ -42,6 +42,10 @@ const routes: Routes = [
   {
     path: 'itemdetail',
     loadChildren: () => import('./pages/itemdetail/itemdetail.module').then( m => m.ItemdetailPageModule)
+  },
+  {
+    path: 'registerpage',
+    loadChildren: () => import('./pages/registerpage/registerpage.module').then( m => m.RegisterpagePageModule)
   },
 ];
 
