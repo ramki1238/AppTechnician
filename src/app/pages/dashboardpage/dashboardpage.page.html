@@ -7,8 +7,11 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <ion-radio-group value="biff">
-  <app-sendertravelerdata *ngFor="let itemData of itemsListData" [itemsData]="itemData"></app-sendertravelerdata>
+  <form [formGroup]="selectedData" (ngSubmit)="saveSenderDetails()">
+  <ion-radio-group formControlName="itemid">
+  <app-sendertravelerdata  *ngFor="let itemData of itemsListData" [itemsData]="itemData"></app-sendertravelerdata>
   </ion-radio-group>
+  <ion-button type="submit" expand="full" color="danger" class="btnsubmit">Submit</ion-button>
+</form>
 </ion-content>
 <app-footer></app-footer>

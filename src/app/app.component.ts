@@ -32,7 +32,18 @@ export class AppComponent {
     this.checkLogin();
   }
   async checkLogin() {
-    await this.commonuiCtrl.isLogin() == true ? this.router.navigate(['dashboardpage']) : this.router.navigate(['welcomeslider']);
+    let loginstatus = await this.commonuiCtrl.isLogin();
+    if (loginstatus == true) {
+      let userexistingstatus = await this.commonuiCtrl.isUserExist();
+      if (userexistingstatus === true) {
+        this.router.navigate(['dashboardpage']);
+      }
+      else {
+        this.router.navigate(['selectuserpage']);
+      }
+    } else {
+      this.router.navigate(['welcomeslider']);
+    }
   }
   RedirectToPage(pageis) {
     this.router.navigate([pageis]);

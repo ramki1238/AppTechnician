@@ -3,6 +3,7 @@ import { LoadingController, MenuController } from '@ionic/angular';
 import { CommonUiControlService } from 'src/app/providers/common-ui-control.service';
 import { ItemProvidersService } from 'src/app/providers/item-providers.service';
 import * as moment from 'moment';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -17,12 +18,23 @@ export class DashboardpagePage implements OnInit {
   typeOfuserDataNeed: string;
   todaydate = moment(new Date(), 'YYYY-MM-DD').format("YYYY-MM-DD");
   itemsListData: UserDatabase
+  selectedData:FormGroup
   constructor(public menu: MenuController,
     private itemprovider: ItemProvidersService,
     private commonUictrl: CommonUiControlService,
-    public loadingController: LoadingController) {
+    public loadingController: LoadingController,private formbuilder:FormBuilder) {
     this.commonUictrl.menuCntrl.enable(true, 'custom');
     if (!this.commonUictrl.menuCntrl.isEnabled) this.commonUictrl.menuCntrl.enable(true);
+    this.selectedData=this.formbuilder.group({
+      usertype: ['', Validators.compose([Validators.required, Validators.minLength(1)])],
+      senderid: ['', Validators.compose([Validators.required, Validators.minLength(1)])],
+      travelerid: ['', Validators.compose([Validators.required, Validators.minLength(1)])],
+      role: ['active'],
+      itemid: ['', Validators.compose([Validators.required, Validators.minLength(1)])],
+      datecreated: [moment(new Date()).format("YYYY-MM-DD  h:mm:ss")],
+      dateupdated: [moment(new Date()).format("YYYY-MM-DD  h:mm:ss")]
+
+    });
   }
 
   ngOnInit() {
@@ -81,6 +93,9 @@ export class DashboardpagePage implements OnInit {
   doRefresh(event) {
     this.getuserData();
     event.target.complete();
+  }
+  saveSenderDetails(){
+    console.log(this.selectedData.value);
   }
 
 }

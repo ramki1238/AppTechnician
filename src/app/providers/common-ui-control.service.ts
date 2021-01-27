@@ -73,6 +73,20 @@ export class CommonUiControlService {
     });
     return islogin1;
   }
+
+  async isUserExist() {
+    var isuserexist1 = false;
+    await this.storage.get("typeofuser").then((data) => {
+      if (data == null || data == '' || data == undefined || data.length == 0) {
+        isuserexist1 = false;
+      }
+      else {
+        isuserexist1 = true;
+      }
+    }).catch((err) => {
+    });
+    return isuserexist1;
+  }
   async saveLogin(userData) {
     await this.storage.set("logindata", userData).then(() => {
       console.log("success");
